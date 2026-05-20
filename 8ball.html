@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play 8 Ball Pool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0c0d14; }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+    <header class="bg-[#181a26] p-4 flex justify-between items-center px-6">
+        <a href="index.html" class="text-sm font-bold text-purple-400 hover:text-purple-300">← Back to Home</a>
+        <h1 class="text-md font-bold text-gray-300">8 Ball Pool</h1>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
+        <div class="w-full max-w-4xl aspect-[16/9] bg-black rounded-2xl overflow-hidden shadow-2xl border border-purple-500/20 relative" id="game-container">
+            
+            <iframe 
+                id="game-frame"
+                src="https://www.crazygames.com/embed/8-ball-pool-wyr" 
+                class="w-full h-full"
+                frameborder="0" 
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                allow="autoplay; fullscreen; keyboard">
+            </iframe>
+
+        </div>
+
+        <button onclick="openFullscreen()" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg text-sm transition-all shadow-lg flex items-center gap-2">
+            📺 Full Screen
+        </button>
+    </main>
+
+    <script>
+        function openFullscreen() {
+            var elem = document.getElementById("game-container");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+    </script>
+
+</body>
+</html>
