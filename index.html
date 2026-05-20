@@ -6,7 +6,6 @@
     <title>موقع الألعاب الخاص بي</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* خلفية مخصصة داكنة تناسب ستايل الألعاب */
         body {
             background-color: #0c0d14;
         }
@@ -36,56 +35,45 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             
             <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 1</span>
+                <div class="w-full h-[80%] rounded-lg overflow-hidden bg-black">
+                    <iframe 
+                        src="https://www.crazygames.com/embed/8-ball-pool-wyr" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                        allow="autoplay; fullscreen; keyboard">
+                    </iframe>
                 </div>
                 <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
+                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">8 Ball Pool (بلياردو)</span>
                 </div>
             </div>
 
             <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 2</span>
+                <div class="w-full h-[80%] bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 overflow-hidden">
+                    <span class="text-xs">مكان اللعبة القادمة</span>
                 </div>
                 <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
+                    <span class="text-xs font-bold text-gray-500 group-hover:text-white transition-colors">قريباً</span>
                 </div>
             </div>
 
             <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 3</span>
+                <div class="w-full h-[80%] bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 overflow-hidden">
+                    <span class="text-xs">مكان اللعبة القادمة</span>
                 </div>
                 <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
+                    <span class="text-xs font-bold text-gray-500 group-hover:text-white transition-colors">قريباً</span>
                 </div>
             </div>
 
             <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 4</span>
+                <div class="w-full h-[80%] bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 overflow-hidden">
+                    <span class="text-xs">مكان اللعبة القادمة</span>
                 </div>
                 <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
-                </div>
-            </div>
-
-            <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 5</span>
-                </div>
-                <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
-                </div>
-            </div>
-
-            <div class="group relative aspect-square rounded-xl overflow-hidden bg-[#181a26] border border-gray-800 p-2 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-purple-500/50 hover:shadow-purple-500/10 cursor-pointer">
-                <div class="w-full h-[80%] bg-white rounded-lg flex items-center justify-center text-gray-400 overflow-hidden">
-                    <span class="text-sm">صورة اللعبة 6</span>
-                </div>
-                <div class="h-[20%] flex items-center justify-center mt-1">
-                    <span class="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">اسم اللعبة</span>
+                    <span class="text-xs font-bold text-gray-500 group-hover:text-white transition-colors">قريباً</span>
                 </div>
             </div>
 
