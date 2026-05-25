@@ -100,53 +100,65 @@
 
          <div id="slider-container" class="w-full md:w-[400px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative bg-slate-900 order-1 md:order-2">
     
-    <div class="slide w-full h-full">
+    <div class="slide active w-full h-full absolute top-0 left-0 transition-opacity duration-500">
         <img src="https://i.ibb.co/vxdXk2fW/security-cameras-outside-the-house.webp" alt="حماية خارجية" class="w-full h-full object-cover">
         <span class="absolute bottom-3 right-3 bg-slate-900/90 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">حماية خارجية 📹</span>
     </div>
 
-    <div class="slide w-full h-full hidden">
+    <div class="slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 opacity-0">
         <img src="https://i.ibb.co/bMnW1p2h/How-to-Choose-the-Right-CCTV-Camera-System-for-Your-Toronto-Home-1.png" alt="مراقبة داخلية" class="w-full h-full object-cover">
         <span class="absolute bottom-3 right-3 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">مراقبة داخلية 📱</span>
     </div>
 
-    <div class="slide w-full h-full hidden">
+    <div class="slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 opacity-0">
         <img src="https://i.ibb.co/FkY77KJM/1.webp" alt="النتيجة النهائية" class="w-full h-full object-cover">
         <span class="absolute bottom-3 right-3 bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">النتيجة النهائية 🖥️</span>
     </div>
 
-    <button onclick="changeSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❮</button>
-    <button onclick="changeSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❯</button>
+    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❮</button>
+    <button onclick="nextSlideButton()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❯</button>
 </div>
 
 <script>
     const container = document.getElementById('slider-container');
     const slides = container.querySelectorAll('.slide');
     let currentIndex = 0;
-    
-    // تشغيل التبديل التلقائي (كل 1.5 ثانية)
-    let autoPlay = setInterval(nextSlide, 1500);
 
-    function showSlide(index) {
-        // إخفاء جميع الصور أولاً
-        slides.forEach(slide => slide.classList.add('hidden'));
-        // إظهار الصورة المطلوبة فقط لإزالة اللون الأسود
-        slides[index].classList.remove('hidden');
-    }
-
-    function changeSlide(direction) {
-        clearInterval(autoPlay); // إيقاف مؤقت عند الضغط باليد
-        
-        currentIndex = (currentIndex + direction + slides.length) % slides.length;
-        showSlide(currentIndex);
-        
-        autoPlay = setInterval(nextSlide, 1500); // إعادة تشغيل التلقائي
-    }
-
+    // دالة الانتقال للصورة التالية (نفس دالتك القديمة تماماً)
     function nextSlide() {
+        slides[currentIndex].classList.remove('active');
+        slides[currentIndex].style.opacity = '0';
+
         currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
+
+        slides[currentIndex].classList.add('active');
+        slides[currentIndex].style.opacity = '1';
     }
+
+    // دالة الانتقال للصورة السابقة (عند ضغط زر اليسار)
+    function prevSlide() {
+        clearInterval(autoPlayInterval); // إيقاف المؤقت مؤقتاً
+        
+        slides[currentIndex].classList.remove('active');
+        slides[currentIndex].style.opacity = '0';
+
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+
+        slides[currentIndex].classList.add('active');
+        slides[currentIndex].style.opacity = '1';
+        
+        autoPlayInterval = setInterval(nextSlide, 1500); // إعادة تشغيل المؤقت
+    }
+
+    // دالة الانتقال للأمام عند ضغط زر اليمين
+    function nextSlideButton() {
+        clearInterval(autoPlayInterval);
+        nextSlide();
+        autoPlayInterval = setInterval(nextSlide, 1500);
+    }
+
+    // تشغيل الموقت التلقائي كل 1.5 ثانية كما كان تماماً
+    let autoPlayInterval = setInterval(nextSlide, 1500);
 </script>
             </div>
         </section>
