@@ -164,29 +164,98 @@
         nextSlide();
     }
 </script>
-            </div>
-        </section>
+            </section>
 
         <section id="shop-security" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row-reverse justify-between items-center gap-6 md:gap-8">
-            <div class="space-y-4 max-w-xl w-full">
-                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-3 py-1 rounded-md font-bold text-xs md:text-sm">
+            
+            <div id="shop-slider-container" class="w-full md:w-[400px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative bg-slate-900 order-1">
+                
+                <div class="shop-slide active w-full h-full absolute top-0 left-0 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop" alt="مراقبة الكاشير" class="w-full h-full object-cover">
+                    <span class="absolute bottom-3 right-3 bg-indigo-900/90 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">منطقة الكاشير 💳</span>
+                </div>
+
+                <div class="shop-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 opacity-0">
+                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=600&auto=format&fit=crop" alt="مراقبة الرفوف" class="w-full h-full object-cover">
+                    <span class="absolute bottom-3 right-3 bg-purple-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">مراقبة الرفوف 🛒</span>
+                </div>
+
+                <div class="shop-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 opacity-0">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" alt="أمن المخازن" class="w-full h-full object-cover">
+                    <span class="absolute bottom-3 right-3 bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">أمن المخازن 📦</span>
+                </div>
+
+                <div class="shop-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 opacity-0">
+                    <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=600&auto=format&fit=crop" alt="غرفة المراقبة" class="w-full h-full object-cover">
+                    <span class="absolute bottom-3 right-3 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">النظام المركزي 🖥️</span>
+                </div>
+
+                <button onclick="prevShopSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❮</button>
+                <button onclick="nextShopSlideButton()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white z-50 active:scale-95 transition-transform shadow-lg text-lg">❯</button>
+            </div>
+
+            <div class="space-y-4 max-w-xl w-full order-2 text-center flex flex-col items-center">
+                
+                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-3 py-1 rounded-md font-bold text-xs md:text-sm mx-auto">
                     <i class="fa-solid fa-shop"></i> حماية الأعمال والمتاجر
                 </div>
-                <h3 class="text-xl md:text-2xl font-bold text-gray-900">نظام حماية وإدارة المحلات</h3>
-                <p class="text-sm md:text-gray-600 leading-relaxed">أمّن تجارتك وضاعف إنتاجيتك من خلال مراقبة المبيعات وسير العمل وحماية الممتلكات من السرقة والتلاعب.</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs md:text-sm text-gray-700 font-medium">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> مراقبة دقيقة لمنطقة الكاشير</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> تسجيل متواصل على مدار 24 ساعة</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> حماية متكاملة ضد السرقة</li>
+                
+                <h3 class="text-xl md:text-2xl font-bold text-gray-900 w-full text-center">نظام حماية وإدارة المحلات</h3>
+                
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed w-full text-center">أمّن تجارتك وضاعف إنتاجيتك من خلال مراقبة المبيعات وسير العمل وحماية الممتلكات من السرقة والتلاعب.</p>
+                
+                <ul class="flex flex-col gap-3 text-[15px] md:text-base text-gray-700 font-medium items-start mx-auto inline-block text-right pr-1">
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-indigo-600 text-lg flex-shrink-0"></i> 
+                        <span>مراقبة دقيقة لمنطقة الكاشير</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-indigo-600 text-lg flex-shrink-0"></i> 
+                        <span>تسجيل متواصل على مدار 24 ساعة</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-indigo-600 text-lg flex-shrink-0"></i> 
+                        <span>حماية متكاملة ضد السرقة</span>
+                    </li>
                 </ul>
-                <div class="pt-2">
+                
+                <div class="pt-2 w-full">
                     <a href="https://wa.me/96896662002" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-indigo-600/20 transition-all text-sm">
                         <i class="fa-brands fa-whatsapp text-lg"></i> اطلب نظام للمحل
                     </a>
                 </div>
             </div>
-            <div class="w-full md:w-auto bg-indigo-50 p-6 md:p-8 rounded-2xl text-indigo-600 text-4xl md:text-6xl flex justify-center items-center"><i class="fa-solid fa-store"></i></div>
         </section>
+
+<script>
+    const shopContainer = document.getElementById('shop-slider-container');
+    const shopSlides = shopContainer.querySelectorAll('.shop-slide');
+    let shopCurrentIndex = 0;
+
+    function nextShopSlide() {
+        shopSlides[shopCurrentIndex].classList.remove('active');
+        shopSlides[shopCurrentIndex].style.opacity = '0';
+
+        shopCurrentIndex = (shopCurrentIndex + 1) % shopSlides.length;
+
+        shopSlides[shopCurrentIndex].classList.add('active');
+        shopSlides[shopCurrentIndex].style.opacity = '1';
+    }
+
+    function prevShopSlide() {
+        shopSlides[shopCurrentIndex].classList.remove('active');
+        shopSlides[shopCurrentIndex].style.opacity = '0';
+
+        shopCurrentIndex = (shopCurrentIndex - 1 + shopSlides.length) % shopSlides.length;
+
+        shopSlides[shopCurrentIndex].classList.add('active');
+        shopSlides[shopCurrentIndex].style.opacity = '1';
+    }
+
+    function nextShopSlideButton() {
+        nextShopSlide();
+    }
+</script>
 
         <section id="camera-install" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
             <div class="space-y-4 max-w-xl w-full">
