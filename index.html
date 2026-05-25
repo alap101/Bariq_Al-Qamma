@@ -1,293 +1,44 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>بريق القمة المميزة | أنظمة وحلول الحماية الذكية</title>
+<!-- استبدل هذا الجزء فقط داخل قسم home-security -->
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<div class="w-full md:w-[400px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative bg-slate-900 order-1 md:order-2">
+    
+    <!-- صورة المراقبة الخارجية -->
+    <div class="slide active w-full h-full">
+        <img src="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/security-cameras-outside-the-house.jpg?v=1754880332" 
+             alt="كاميرات مراقبة خارجية للمنزل" 
+             class="w-full h-full object-cover">
+             
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
-
-        body{
-            font-family:'Tajawal',sans-serif;
-            background:#f8fafc;
-        }
-
-        .slide{
-            display:none;
-        }
-
-        .slide.active{
-            display:block;
-            animation:fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn{
-            from{opacity:0;}
-            to{opacity:1;}
-        }
-
-        .hero-bg{
-            background:
-            linear-gradient(rgba(2,6,23,.82),rgba(15,23,42,.9)),
-            url('https://cdn.shopify.com/s/files/1/0504/7094/4954/files/security-cameras-outside-the-house.jpg?v=1754880332');
-            background-size:cover;
-            background-position:center;
-        }
-
-        .glass{
-            backdrop-filter: blur(12px);
-        }
-    </style>
-</head>
-
-<body class="text-gray-800">
-
-<!-- HEADER -->
-<header class="bg-white/90 glass shadow-sm sticky top-0 z-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-
-        <div class="flex items-center gap-4">
-
-            <div class="text-4xl text-blue-700">
-                <i class="fa-solid fa-camera"></i>
-            </div>
-
-            <div class="border-r-2 border-blue-700 pr-3">
-                <h1 class="font-black text-xl md:text-3xl text-slate-900">
-                    بريق القمة المميزة
-                </h1>
-
-                <p class="text-[10px] md:text-xs tracking-[3px] text-gray-500 font-bold uppercase">
-                    BAREEQ ALQIMMAH ALMUMAYAZAH
-                </p>
-            </div>
-
-        </div>
-
-        <div class="hidden md:flex items-center gap-2 bg-blue-50 border border-blue-100 px-4 py-2 rounded-full text-sm font-bold text-blue-700">
-            <i class="fa-solid fa-shield-halved"></i>
-            أنظمة حماية متكاملة
-        </div>
-
-    </div>
-</header>
-
-<!-- HERO -->
-<section class="hero-bg text-white py-24 px-4 relative overflow-hidden">
-
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-
-        <span class="inline-block bg-blue-500/20 border border-blue-400/20 text-blue-200 px-5 py-2 rounded-full text-sm font-bold">
-            نحن لا نبيع كاميرات .. نحن نؤمّن ممتلكاتك
+        <span class="absolute bottom-3 right-3 bg-slate-900/90 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">
+            حماية خارجية 📹
         </span>
-
-        <h2 class="text-3xl md:text-6xl font-black leading-tight mt-7">
-            أنظمة مراقبة وحماية<br>
-            باحترافية عالية
-        </h2>
-
-        <p class="text-gray-300 mt-6 text-base md:text-xl leading-loose max-w-2xl mx-auto">
-            تركيب كاميرات مراقبة — أنظمة حماية — مكائن أبواب ذكية —
-            حلول أمان متكاملة للمنازل والمحلات التجارية.
-        </p>
-
-        <div class="mt-10 flex flex-wrap justify-center gap-4">
-
-            <a href="https://wa.me/96896662002"
-               target="_blank"
-               class="bg-green-500 hover:bg-green-600 transition-all px-8 py-4 rounded-xl font-bold shadow-2xl text-lg">
-                <i class="fa-brands fa-whatsapp ml-2"></i>
-                تواصل واتساب
-            </a>
-
-            <a href="#services"
-               class="bg-white/10 hover:bg-white/20 border border-white/20 transition-all px-8 py-4 rounded-xl font-bold text-lg">
-                مشاهدة الخدمات
-            </a>
-
-        </div>
-
     </div>
 
-</section>
+    <!-- صورة المراقبة الداخلية -->
+    <div class="slide w-full h-full">
+        <img src="https://lh3.googleusercontent.com/rd-gg/AEir0wI_ATfla500_L61nxlg_4zMRGB1359GAm9RxIL5lCZMn_At1nUiik3SOGncnGvnOdKpG5n8CXCjTn9I6sr8LNIx9K5R63ZDp_1qdg4xYWku5YRrP4vfryXVCR33XNMiF7BcaIN_bLuI-SSFLAE8ajWxSavSBj0J5dq2KLogb74EqR6dtO6GC8m_lyO1sYEii3ndL_oGEkUj9J1y_3qz6a0--uNquv7a1W0wGpLjYQNPyfZIwBLEbM3hnnv03q5vySJYMtKeZOM7C1toINMJb30lzEsru4Y6IEVvmHkLTJRuAv6qgimuXCTanbJE-FP-AphJHQEVK8e7p4_gPz9tQV0fF_KWXv9u2PI26h2uV3DqHLoHIiTpxd7y9TZKChZuGQiAWqX_ZTx_Uw147aIvCvXG3x31co762txdgr14EbV9IZMlsdO_NLIJqG5pRzXpwR86hWE9qXRz9UfJ-vg2UCMvUctrEr9fuUPUfvDapF5HoQQpO2H21b9cDaRh0rbliQKDSUwJjKBh4VnTp3rzo17758KeV48aEd0lk8wC1OesD-22w_4Sw0MOExe3ULfgnp4oV5Y63wgrb7q-_GYk4f-iD9jeZUtYQ4WE_tHUEoXBrdoeq1Vk_TUqQUdRNhKiiBKvoZ2D3Sk-VdbZUnd2GwfQiDk5RBBTPseen8sCGJFcMKdtS9jwlCmZen8CjEKEif4xjEdXSgPd3wO2zqr24dDroZk9FCnESHCOIIsD1zl-ys03QPjkCHNqvDo8bLGx-sXl9urtdDCMOMiTSSv0au9pLGFGxV8KfSKlBN8T618-sagnI1TUB1BbuwUxOyWCxp8NUXi5kccarR7_JTEaoOj9IgYc51vb63AgybTlkPZXb7pPsLIbm6JxQIlAyQ2e0cGPq4gsezCsJUTr-cLek81zAFkq5gP4HrWlOc_dt5KLdpYhlZRuhV_lGRqqda1LeOQfdR8lBFlc73pddWN-9GQ-B_xkX_TFG5Y4xYoJCryz18zdPhKwYEWmdkVA-RhLgeTZZgcyBvRQCdDhVlJHTgxLEJIqx9U-7eaU1l4wi-SgSZrvey6gyK51bJLFgFqTxJ4Moixil35Qc-ILbyGwoqKXw-juaBYDaqi1mj8yi7mt57WEUlUHf1gzYmGmNNPxEYuxUIV7hZA0ZAk4jIwMwmu-NIGci2XP9LiT5als_Gtoozoxo2mO5PWvx2QtrYAAIS8csOVzWM9SUrmwISiYF3u28oiRg8XjyHiySqRjd7kJ8YrvLQCKT1rrx7AVT_9MVW0z3cCfD4ih5IXVCUdb6osjmVubKSN2JcaxNPdKPtYY6AYxp3D0-6XDWPBgZthoKhGB4VUZ1UjeBu76W0WYp6kMh8koagjMxA=s512" 
+             alt="كاميرات مراقبة داخلية للمنزل" 
+             class="w-full h-full object-cover">
 
-<!-- SERVICES -->
-<section id="services" class="max-w-7xl mx-auto px-4 py-16">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
-    <div class="text-center mb-12">
-        <h3 class="text-3xl md:text-4xl font-black text-slate-900">
-            خدماتنا
-        </h3>
-
-        <p class="text-gray-500 mt-3">
-            حلول حماية ذكية للمنازل والمحلات والمنشآت
-        </p>
+        <span class="absolute bottom-3 right-3 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">
+            مراقبة داخلية 📱
+        </span>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- صورة النتيجة النهائية -->
+    <div class="slide w-full h-full">
+        <img src="https://www.shutterstock.com/shutterstock/videos/1101513403/thumb/1.jpg?ip=x480" 
+             alt="شاشات المراقبة والتحكم" 
+             class="w-full h-full object-cover">
 
-        <!-- CARD -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
-            <img src="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/security-cameras-outside-the-house.jpg?v=1754880332"
-                 class="h-52 w-full object-cover">
-
-            <div class="p-6">
-
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-700 text-2xl mb-4">
-                    <i class="fa-solid fa-house-shield"></i>
-                </div>
-
-                <h4 class="text-xl font-black mb-3">
-                    مراقبة خارجية
-                </h4>
-
-                <p class="text-gray-600 leading-loose text-sm">
-                    كاميرات مراقبة خارجية بدقة عالية مع رؤية ليلية وتحكم مباشر من الجوال.
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-
-            <img src="https://lh3.googleusercontent.com/rd-gg/AEir0wI_ATfla500_L61nxlg_4zMRGB1359GAm9RxIL5lCZMn_At1nUiik3SOGncnGvnOdKpG5n8CXCjTn9I6sr8LNIx9K5R63ZDp_1qdg4xYWku5YRrP4vfryXVCR33XNMiF7BcaIN_bLuI-SSFLAE8ajWxSavSBj0J5dq2KLogb74EqR6dtO6GC8m_lyO1sYEii3ndL_oGEkUj9J1y_3qz6a0--uNquv7a1W0wGpLjYQNPyfZIwBLEbM3hnnv03q5vySJYMtKeZOM7C1toINMJb30lzEsru4Y6IEVvmHkLTJRuAv6qgimuXCTanbJE-FP-AphJHQEVK8e7p4_gPz9tQV0fF_KWXv9u2PI26h2uV3DqHLoHIiTpxd7y9TZKChZuGQiAWqX_ZTx_Uw147aIvCvXG3x31co762txdgr14EbV9IZMlsdO_NLIJqG5pRzXpwR86hWE9qXRz9UfJ-vg2UCMvUctrEr9fuUPUfvDapF5HoQQpO2H21b9cDaRh0rbliQKDSUwJjKBh4VnTp3rzo17758KeV48aEd0lk8wC1OesD-22w_4Sw0MOExe3ULfgnp4oV5Y63wgrb7q-_GYk4f-iD9jeZUtYQ4WE_tHUEoXBrdoeq1Vk_TUqQUdRNhKiiBKvoZ2D3Sk-VdbZUnd2GwfQiDk5RBBTPseen8sCGJFcMKdtS9jwlCmZen8CjEKEif4xjEdXSgPd3wO2zqr24dDroZk9FCnESHCOIIsD1zl-ys03QPjkCHNqvDo8bLGx-sXl9urtdDCMOMiTSSv0au9pLGFGxV8KfSKlBN8T618-sagnI1TUB1BbuwUxOyWCxp8NUXi5kccarR7_JTEaoOj9IgYc51vb63AgybTlkPZXb7pPsLIbm6JxQIlAyQ2e0cGPq4gsezCsJUTr-cLek81zAFkq5gP4HrWlOc_dt5KLdpYhlZRuhV_lGRqqda1LeOQfdR8lBFlc73pddWN-9GQ-B_xkX_TFG5Y4xYoJCryz18zdPhKwYEWmdkVA-RhLgeTZZgcyBvRQCdDhVlJHTgxLEJIqx9U-7eaU1l4wi-SgSZrvey6gyK51bJLFgFqTxJ4Moixil35Qc-ILbyGwoqKXw-juaBYDaqi1mj8yi7mt57WEUlUHf1gzYmGmNNPxEYuxUIV7hZA0ZAk4jIwMwmu-NIGci2XP9LiT5als_Gtoozoxo2mO5PWvx2QtrYAAIS8csOVzWM9SUrmwISiYF3u28oiRg8XjyHiySqRjd7kJ8YrvLQCKT1rrx7AVT_9MVW0z3cCfD4ih5IXVCUdb6osjmVubKSN2JcaxNPdKPtYY6AYxp3D0-6XDWPBgZthoKhGB4VUZ1UjeBu76W0WYp6kMh8koagjMxA=s512"
-                 class="h-52 w-full object-cover">
-
-            <div class="p-6">
-
-                <div class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 text-2xl mb-4">
-                    <i class="fa-solid fa-video"></i>
-                </div>
-
-                <h4 class="text-xl font-black mb-3">
-                    مراقبة داخلية
-                </h4>
-
-                <p class="text-gray-600 leading-loose text-sm">
-                    أنظمة مراقبة ذكية داخلية مع مشاهدة مباشرة وتسجيل مستمر 24 ساعة.
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-
-            <img src="https://www.shutterstock.com/shutterstock/videos/1101513403/thumb/1.jpg?ip=x480"
-                 class="h-52 w-full object-cover">
-
-            <div class="p-6">
-
-                <div class="w-14 h-14 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-700 text-2xl mb-4">
-                    <i class="fa-solid fa-desktop"></i>
-                </div>
-
-                <h4 class="text-xl font-black mb-3">
-                    النتيجة النهائية
-                </h4>
-
-                <p class="text-gray-600 leading-loose text-sm">
-                    مشاهدة وتحكم كامل بالكاميرات من الهاتف أو الشاشة الرئيسية بسهولة.
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-
-            <div class="h-52 bg-gradient-to-br from-amber-500 to-yellow-400 flex items-center justify-center text-white text-7xl">
-                <i class="fa-solid fa-door-open"></i>
-            </div>
-
-            <div class="p-6">
-
-                <div class="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-2xl mb-4">
-                    <i class="fa-solid fa-fingerprint"></i>
-                </div>
-
-                <h4 class="text-xl font-black mb-3">
-                    مكائن الأبواب
-                </h4>
-
-                <p class="text-gray-600 leading-loose text-sm">
-                    حلول ذكية للأبواب والبوابات مع بصمة وتحكم عن بعد وأنظمة دخول حديثة.
-                </p>
-
-            </div>
-
-        </div>
-
+        <span class="absolute bottom-3 right-3 bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-md z-30">
+            النتيجة النهائية 🖥️
+        </span>
     </div>
 
-</section>
-
-<!-- CTA -->
-<section class="max-w-6xl mx-auto px-4 pb-20">
-
-    <div class="bg-gradient-to-r from-slate-900 to-blue-900 rounded-[35px] p-10 md:p-16 text-center text-white relative overflow-hidden">
-
-        <div class="relative z-10">
-
-            <h3 class="text-3xl md:text-5xl font-black leading-tight">
-                جاهز تحمي بيتك أو محلك؟
-            </h3>
-
-            <p class="text-gray-300 mt-5 text-lg leading-loose max-w-2xl mx-auto">
-                تواصل معنا الآن وخذ استشارة مجانية وتركيب احترافي بأفضل الأسعار.
-            </p>
-
-            <a href="https://wa.me/96896662002"
-               target="_blank"
-               class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 mt-8 px-8 py-4 rounded-2xl font-black text-lg shadow-2xl transition-all">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                اطلب عبر الواتساب
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-slate-950 text-center text-gray-400 py-10 px-4">
-
-    <h4 class="text-white font-black text-2xl">
-        بريق القمة المميزة
-    </h4>
-
-    <p class="mt-3 text-sm tracking-[3px] uppercase text-slate-500">
-        BAREEQ ALQIMMAH ALMUMAYAZAH
-    </p>
-
-    <div class="w-20 h-1 bg-blue-600 rounded-full mx-auto my-5"></div>
-
-    <p class="text-sm">
-        جميع الحقوق محفوظة © 2026
-    </p>
-
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/96896662002"
-   target="_blank"
-   class="fixed bottom-5 left-5 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 animate-bounce">
-
-    <i class="fa-brands fa-whatsapp"></i>
-
-</a>
-
-</body>
-</html>
+</div>
