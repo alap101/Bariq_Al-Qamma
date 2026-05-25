@@ -124,7 +124,7 @@
     const slides = container.querySelectorAll('.slide');
     let currentIndex = 0;
 
-    // دالة الانتقال للصورة التالية (نفس دالتك القديمة تماماً)
+    // دالة الانتقال للصورة التالية
     function nextSlide() {
         slides[currentIndex].classList.remove('active');
         slides[currentIndex].style.opacity = '0';
@@ -135,10 +135,8 @@
         slides[currentIndex].style.opacity = '1';
     }
 
-    // دالة الانتقال للصورة السابقة (عند ضغط زر اليسار)
+    // دالة زر اليسار (السابق)
     function prevSlide() {
-        clearInterval(autoPlayInterval); // إيقاف المؤقت مؤقتاً
-        
         slides[currentIndex].classList.remove('active');
         slides[currentIndex].style.opacity = '0';
 
@@ -146,19 +144,12 @@
 
         slides[currentIndex].classList.add('active');
         slides[currentIndex].style.opacity = '1';
-        
-        autoPlayInterval = setInterval(nextSlide, 1500); // إعادة تشغيل المؤقت
     }
 
-    // دالة الانتقال للأمام عند ضغط زر اليمين
+    // دالة زر اليمين (التالي)
     function nextSlideButton() {
-        clearInterval(autoPlayInterval);
         nextSlide();
-        autoPlayInterval = setInterval(nextSlide, 1500);
     }
-
-    // تشغيل الموقت التلقائي كل 1.5 ثانية كما كان تماماً
-    let autoPlayInterval = setInterval(nextSlide, 1500);
 </script>
             </div>
         </section>
