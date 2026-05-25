@@ -85,24 +85,28 @@
             </div>
             
             <div class="w-full md:w-[400px] h-[280px] rounded-2xl hidden md:block overflow-hidden shadow-2xl border-4 border-white relative bg-gray-200">
+                
                 <div class="slide active w-full h-full">
-                    <img src="https://www.shutterstock.com/shutterstock/videos/1101513403/thumb/1.jpg?ip=x480" 
-                         alt="نتيجة نظام المراقبة بريق القمة" 
-                         class="w-full h-full object-contain bg-black">
-                    <span class="absolute bottom-2 right-2 bg-blue-600 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">النتيجة النهائية 🖥️</span>
-                </div>
-                <div class="slide w-full h-full">
                     <img src="https://cdn.shopify.com/s/files/1/0504/7094/4954/files/security-cameras-outside-the-house.jpg?v=1754880332" 
                          alt="كاميرات مراقبة خارجية للمنزل بريق القمة" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-contain bg-white">
                     <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">حماية خارجية 📹</span>
                 </div>
+
                 <div class="slide w-full h-full">
                     <img src="https://gtsecurity.ca/wp-content/uploads/2025/08/How-to-Choose-the-Right-CCTV-Camera-System-for-Your-Toronto-Home-1.png" 
                          alt="كاميرات مراقبة داخلية للمنزل" 
                          class="w-full h-full object-cover">
                     <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">مراقبة داخلية 📱</span>
                 </div>
+
+                <div class="slide w-full h-full">
+                    <img src="https://www.shutterstock.com/shutterstock/videos/1101513403/thumb/1.jpg?ip=x480" 
+                         alt="نتيجة نظام المراقبة بريق القمة" 
+                         class="w-full h-full object-contain bg-black">
+                    <span class="absolute bottom-2 right-2 bg-blue-600 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">النتيجة النهائية 🖥️</span>
+                </div>
+
             </div>
         </section>
 
@@ -191,7 +195,7 @@
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 4000); // التبديل تلقائياً كل 4 ثوانٍ
+        }, 4000); // التبديل التلقائي كل 4 ثوانٍ بالتوالي الجديد
     </script>
 
 </body>
