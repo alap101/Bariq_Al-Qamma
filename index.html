@@ -1,569 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realistic 3D Gun Game (WebGL)</title>
+    <title>بريق القمة المميزة | أنظمة وحلول الحماية الذكية</title>
+    <!-- تضمين مكتبة Tailwind CSS للمظهر الاحترافي -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- تضمين أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        #game-viewport {
-            width: 100%;
-            height: 100%;
-        }
-        /* Crosshair */
-        #crosshair {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            transform: translate(-50%, -50%);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 5;
-        }
-        /* HUD Style */
-        #hud {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 40px;
-            background: rgba(10, 10, 10, 0.85);
-            padding: 15px 40px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            pointer-events: none;
-            z-index: 5;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-        .hud-card {
-            text-align: center;
-        }
-        .hud-label {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-        .hud-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-        #val-weapon { color: #ff9900; }
-        #val-tier { color: #00ffcc; }
-
-        /* Overlay/Start Menu */
-        #overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(20,20,20,0.85) 0%, rgba(5,5,5,0.95) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            z-index: 10;
-            text-align: center;
-            transition: opacity 0.3s ease;
-        }
-        h1 { margin-bottom: 10px; font-size: 42px; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
-        p { color: #aaa; margin: 5px 0; font-size: 16px; }
-        .btn {
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: #ff9900;
-            color: #000;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255,153,0,0.4);
-            transition: all 0.2s ease;
-        }
-        .btn:hover { background: #ffaa22; transform: translateY(-2px); }
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        body { font-family: 'Tajawal', sans-serif; }
     </style>
-    <!-- Include Three.js via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <div id="crosshair"></div>
-    
-    <div id="hud">
-        <div class="hud-card">
-            <div class="hud-label">Current Weapon</div>
-            <div id="val-weapon" class="hud-value">TACTICAL PISTOL</div>
+    <!-- الهيدر / الشعار -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <div class="bg-blue-600 text-white p-2 rounded-lg shadow-md">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <span class="font-black text-xl tracking-tight text-gray-900 mr-2">بريق القمة المميزة</span>
+            </div>
+            <span class="text-xs bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-full">أنظمة حماية متكاملة</span>
         </div>
-        <div class="hud-card">
-            <div class="hud-label">Gun Game Progress</div>
-            <div id="val-tier" class="hud-value">Tier 1 / 3</div>
+    </header>
+
+    <!-- قسم الترحيب والـ Hero -->
+    <section class="bg-gradient-to-b from-blue-900 to-indigo-950 text-white py-16 px-4 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <span class="bg-blue-500/30 text-blue-300 text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">نحن لا نبيع كاميرات.. نحن نؤمّن ممتلكاتك</span>
+            <h1 class="text-3xl md:text-5xl font-black mt-6 leading-tight">نركب لك نظام كامل حسب المكان والأمان الذي تستحقه</h1>
+            <p class="text-gray-300 mt-4 text-lg max-w-xl mx-auto">حلول حماية جاهزة وذكية للمنازل والمحلات بأعلى معايير الدقة والاحترافية.</p>
         </div>
-        <div class="hud-card">
-            <div class="hud-label">Eliminations</div>
-            <div id="val-kills" class="hud-value">0</div>
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    </section>
+
+    <!-- الأزرار الرئيسية الأربعة (أختر خدمتك) -->
+    <section class="max-w-6xl mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+            <h2 class="text-center text-xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-2">
+                <span>اختر خدمتك واطلب الحل فوراً</span> 👇
+            </h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="#home-security" class="flex flex-col items-center justify-center p-6 bg-blue-50 hover:bg-blue-100 border border-blue-100 rounded-xl transition-all transform hover:-translate-y-1 text-center group">
+                    <i class="fa-solid fa-house-shield text-3xl text-blue-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-gray-800">حماية المنازل</span>
+                </a>
+                <a href="#shop-security" class="flex flex-col items-center justify-center p-6 bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 rounded-xl transition-all transform hover:-translate-y-1 text-center group">
+                    <i class="fa-solid fa-shop text-3xl text-indigo-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-gray-800">حماية المحلات</span>
+                </a>
+                <a href="#camera-install" class="flex flex-col items-center justify-center p-6 bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 rounded-xl transition-all transform hover:-translate-y-1 text-center group">
+                    <i class="fa-solid fa-video text-3xl text-emerald-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-gray-800">تركيب كاميرات</span>
+                </a>
+                <a href="#gate-systems" class="flex flex-col items-center justify-center p-6 bg-amber-50 hover:bg-amber-100 border border-amber-100 rounded-xl transition-all transform hover:-translate-y-1 text-center group">
+                    <i class="fa-solid fa-door-open text-3xl text-amber-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-gray-800">مكائن الأبواب</span>
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div id="overlay">
-        <h1>REALISTIC 3D GUN GAME</h1>
-        <p>Move: <b>W, A, S, D</b> | Look: <b>Mouse (Pointer Lock)</b> | Shoot: <b>Left Click</b></p>
-        <p style="color: #ff9900; margin-top: 15px;">Eliminate a target to immediately evolve your 3D firearm!</p>
-        <button class="btn" id="start-btn">ENGAGE SIMULATION</button>
-    </div>
+    <!-- تفاصيل الحلول والخدمات -->
+    <main class="max-w-5xl mx-auto px-4 py-16 space-y-16">
 
-    <div id="game-viewport"></div>
+        <!-- 1. قسم المنازل -->
+        <section id="home-security" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="space-y-4 max-w-xl">
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-md font-bold text-sm">
+                    <i class="fa-solid fa-house"></i> حماية كاملة للبيت
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">نظام أمان المسكن الذكي</h3>
+                <p class="text-gray-600 leading-relaxed">راقب بيتك وأنت مطمئن من أي مكان في العالم. نوفر لك توليفة حماية متكاملة تغطي كافة الثغرات الحساسة للمنزل.</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-600"></i> كاميرات خارجية وداخلية بدقة عالية</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-600"></i> مراقبة وبث مباشر عبر الجوال 24/7</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-600"></i> رؤية ليلية فائقة الوضوح</li>
+                </ul>
+                <div class="pt-4">
+                    <a href="https://wa.me/YOUR_NUMBER?text=مرحباً بريق القمة، أريد طلب تركيب نظام حماية للمنزل" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-blue-600/20 transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> اطلب تركيب للمنزل
+                    </a>
+                </div>
+            </div>
+            <div class="bg-blue-50 p-8 rounded-2xl text-blue-600 text-6xl hidden md:block"><i class="fa-solid fa-house-lock"></i></div>
+        </section>
 
-<script>
-/**
- * GLOBAL CONFIGURATIONS & STATE
- */
-let scene, camera, renderer, audioCtx;
-let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
-let prevTime = performance.now();
-const velocity = new THREE.Vector3();
-const direction = new THREE.Vector3();
+        <!-- 2. قسم المحلات -->
+        <section id="shop-security" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
+            <div class="space-y-4 max-w-xl">
+                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-3 py-1 rounded-md font-bold text-sm">
+                    <i class="fa-solid fa-shop"></i> حماية الأعمال والمتاجر
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">نظام حماية وإدارة المحلات</h3>
+                <p class="text-gray-600 leading-relaxed">أمّن تجارتك وضاعف إنتاجيتك من خلال مراقبة المبيعات وسير العمل وحماية الممتلكات من السرقة.</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> مراقبة دقيقة ومنفصلة لمنطقة الكاشير</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> تسجيل متواصل على مدار 24 ساعة</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-indigo-600"></i> حماية متكاملة وضد السرقة والتلاعب</li>
+                </ul>
+                <div class="pt-4">
+                    <a href="https://wa.me/YOUR_NUMBER?text=مرحباً بريق القمة، أريد طلب نظام حماية للمحل التجاري" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-indigo-600/20 transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> اطلب نظام للمحل
+                    </a>
+                </div>
+            </div>
+            <div class="bg-indigo-50 p-8 rounded-2xl text-indigo-600 text-6xl hidden md:block"><i class="fa-solid fa-store-slash"></i></div>
+        </section>
 
-// Pointer lock tracking
-const overlay = document.getElementById('overlay');
-const startBtn = document.getElementById('start-btn');
+        <!-- 3. قسم التركيب الاحترافي -->
+        <section id="camera-install" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="space-y-4 max-w-xl">
+                <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-md font-bold text-sm">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> خدمة هندسية معتمدة
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">تركيب وإعداد الكاميرات باحترافية</h3>
+                <p class="text-gray-600 leading-relaxed">الأمان لا يعتمد على الكاميرا فقط، بل على دقة التركيب وزوايا الرؤية الميتة. فريقنا يتولى كل شيء عنك بأسلاك مخفية ومظهر أنيق.</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> تمديد أسلاك منظم ومخفي تماماً</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> إعداد وبرمجة النظام بالكامل</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> ربط سريع ومباشر على هواتفكم</li>
+                </ul>
+                <div class="pt-4">
+                    <a href="https://wa.me/YOUR_NUMBER?text=مرحباً بريق القمة، أريد حجز موعد تركيب كاميرات" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-emerald-600/20 transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> احجز تركيب الآن
+                    </a>
+                </div>
+            </div>
+            <div class="bg-emerald-50 p-8 rounded-2xl text-emerald-600 text-6xl hidden md:block"><i class="fa-solid fa-network-wired"></i></div>
+        </section>
 
-// Gun Game Weapons Configuration
-const WEAPONS = [
-    { name: "Tactical Pistol", barrelLen: 0.6, barrelThick: 0.06, bodySize: 0.15, color: 0x222222, pitch: 180, rate: 250 },
-    { name: "Assault Rifle", barrelLen: 1.4, barrelThick: 0.05, bodySize: 0.25, color: 0x3a3d3a, pitch: 110, rate: 120 },
-    { name: "Heavy Railgun", barrelLen: 1.8, barrelThick: 0.12, bodySize: 0.35, color: 0x112233, pitch: 350, rate: 600 }
-];
-let currentTier = 0;
-let scoreKills = 0;
+        <!-- 4. قسم مكائن الأبواب -->
+        <section id="gate-systems" class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 scroll-mt-24 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
+            <div class="space-y-4 max-w-xl">
+                <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-3 py-1 rounded-md font-bold text-sm">
+                    <i class="fa-solid fa-key"></i> تحكم ذكي بالدخول
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">أنظمة ومكائن الأبواب الذكية</h3>
+                <p class="text-gray-600 leading-relaxed">ودّع المفاتيح التقليدية وحوّل بوابتك إلى نظام ذكي يتحكم في من يدخل ويخرج بكفاءة وسهولة فائقة.</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-600"></i> فتح الأبواب ببصمة الإصبع أو الوجه</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-600"></i> فتح ذكي عبر الكرت والرمز السري</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-600"></i> متوافقة مع الأنظمة الأمنية الحديثة</li>
+                </ul>
+                <div class="pt-4">
+                    <a href="https://wa.me/YOUR_NUMBER?text=مرحباً بريق القمة، أريد الاستفسار عن مكائن الأبواب الذكية" target="_blank" class="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-amber-600/20 transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> اطلب مكينة باب
+                    </a>
+                </div>
+            </div>
+            <div class="bg-amber-50 p-8 rounded-2xl text-amber-600 text-6xl hidden md:block"><i class="fa-solid fa-fingerprint"></i></div>
+        </section>
 
-// Game Objects
-let weaponGroup; // Container holding our 3D gun attached to camera
-let targets = [];
-let flashLight, muzzleFlashMesh;
-let isRecoiling = false, recoilTimer = 0;
+    </main>
 
-/**
- * INITIALIZE GRAPHICS ENGINE
- */
-function init() {
-    // 1. Scene setup
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0c10);
-    scene.fog = new THREE.FogExp2(0x0a0c10, 0.035);
+    <!-- الفوتر / تذييل الصفحة -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center border-t border-gray-800">
+        <p class="font-bold text-white mb-2">بريق القمة المميزة</p>
+        <p class="text-sm">جميع الحقوق محفوظة &copy; 2026 - حلول وأنظمة الأمان الاحترافية</p>
+    </footer>
 
-    // 2. Camera setup
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.y = 2; // Human height viewpoint
+    <!-- 📲 زر الواتساب الفوري الثابت -->
+    <a href="https://wa.me/YOUR_NUMBER?text=مرحباً بريق القمة، أرغب في استشارة حول أنظمة الأمان للـ..." 
+       target="_blank" 
+       class="fixed bottom-6 left-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition-all transform hover:scale-110 animate-bounce"
+       title="تواصل معنا عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-    // 3. WebGL Renderer configuration
-    renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
-    document.getElementById('game-viewport').appendChild(renderer.domElement);
-
-    // 4. Lights
-    const ambientLight = new THREE.AmbientLight(0x222244, 0.6);
-    scene.add(ambientLight);
-
-    const sunLight = new THREE.DirectionalLight(0xffddaa, 0.8);
-    sunLight.position.set(20, 40, 20);
-    sunLight.castShadow = true;
-    sunLight.shadow.mapSize.width = 2048;
-    sunLight.shadow.mapSize.height = 2048;
-    scene.add(sunLight);
-
-    // Subtle atmospheric floor lighting points
-    const pointLight = new THREE.PointLight(0x00aaff, 1, 15);
-    pointLight.position.set(0, 4, 0);
-    scene.add(pointLight);
-
-    // 5. Build Environment Maps (Procedural Industrial Complex)
-    buildMapEnvironment();
-
-    // 6. Build the Weapon system
-    weaponGroup = new THREE.Group();
-    camera.add(weaponGroup);
-    scene.add(camera); // Adding camera to scene ensures children move dynamically with it
-    reconstruct3DWeapon();
-
-    // 7. Spawn initial target characters
-    spawnTarget(0, 2, -15, 0xff3333);
-    spawnTarget(12, 2, -8, 0x33ff33);
-    spawnTarget(-10, 2, -22, 0x00ffff);
-
-    // 8. Wire Up Input Handlers
-    setupInputListeners();
-
-    // 9. Begin Engine Loop
-    window.addEventListener('resize', onWindowResize);
-    animate();
-}
-
-/**
- * PROCEDURAL PROCEDURES FOR REALISTIC GEOMETRY & TEXTURES
- */
-function buildMapEnvironment() {
-    // Canvas procedural generation for realistic concrete bump map
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = 256;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#666666';
-    ctx.fillRect(0, 0, 256, 256);
-    for (let i = 0; i < 5000; i++) {
-        let n = Math.random() * 40;
-        ctx.fillStyle = `rgb(${60+n},${60+n},${60+n})`;
-        ctx.fillRect(Math.random()*256, Math.random()*256, 2, 2);
-    }
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(20, 20);
-
-    // Ground Plane with Material Properties
-    const floorGeo = new THREE.PlaneGeometry(100, 100);
-    const floorMat = new THREE.MeshStandardMaterial({ 
-        map: texture, 
-        roughness: 0.7, 
-        metalness: 0.2 
-    });
-    const floor = new THREE.Mesh(floorGeo, floorMat);
-    floor.rotation.x = -Math.PI / 2;
-    floor.receiveShadow = true;
-    scene.add(floor);
-
-    // Build some realistic architectural pillars/walls
-    const wallGeo = new THREE.BoxGeometry(4, 8, 4);
-    const wallMat = new THREE.MeshStandardMaterial({ color: 0x333538, roughness: 0.5, metalness: 0.5 });
-    
-    const coordinates = [
-        [-10, -10], [10, -10], [-15, 5], [15, 5], [0, -25], [8, -20], [-8, -20]
-    ];
-
-    coordinates.forEach(coord => {
-        const pillar = new THREE.Mesh(wallGeo, wallMat);
-        pillar.position.set(coord[0], 4, coord[1]);
-        pillar.castShadow = true;
-        pillar.receiveShadow = true;
-        scene.add(pillar);
-    });
-}
-
-/**
- * BUILD/UPGRADE 3D PROCEDURAL FIREARMS
- */
-function reconstruct3DWeapon() {
-    // Clear out old parts
-    while(weaponGroup.children.length > 0){
-        weaponGroup.remove(weaponGroup.children[0]);
-    }
-
-    const config = WEAPONS[currentTier];
-
-    // Main structural receiver body
-    const bodyGeo = new THREE.BoxGeometry(config.bodySize, config.bodySize, config.bodySize * 2.5);
-    const gunMat = new THREE.MeshStandardMaterial({ color: config.color, roughness: 0.3, metalness: 0.8 });
-    const bodyMesh = new THREE.Mesh(bodyGeo, gunMat);
-    bodyMesh.castShadow = true;
-    weaponGroup.add(bodyMesh);
-
-    // Long cylinder barrel assemblies
-    const barrelGeo = new THREE.CylinderGeometry(config.barrelThick, config.barrelThick, config.barrelLen, 16);
-    barrelGeo.rotateX(Math.PI / 2); // align forward facing direction
-    const barrelMesh = new THREE.Mesh(barrelGeo, gunMat);
-    barrelMesh.position.set(0, config.bodySize / 6, -config.barrelLen / 2);
-    barrelMesh.castShadow = true;
-    weaponGroup.add(barrelMesh);
-
-    // Grip stock component
-    const gripGeo = new THREE.BoxGeometry(config.bodySize * 0.8, config.bodySize * 1.5, config.bodySize * 0.8);
-    const gripMesh = new THREE.Mesh(gripGeo, gunMat);
-    gripMesh.position.set(0, -config.bodySize, 0.05);
-    gripMesh.rotation.x = 0.2;
-    weaponGroup.add(gripMesh);
-
-    // Add Dynamic Muzzle Flash object to the very end of barrel tip
-    const flashGeo = new THREE.ConeGeometry(0.15, 0.4, 8);
-    flashGeo.rotateX(-Math.PI / 2);
-    const flashMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0 });
-    muzzleFlashMesh = new THREE.Mesh(flashGeo, flashMat);
-    muzzleFlashMesh.position.set(0, config.bodySize / 6, -config.barrelLen);
-    weaponGroup.add(muzzleFlashMesh);
-
-    // Re-offset whole firearm model position organically off into bottom-right corner area of HUD view
-    weaponGroup.position.set(0.25, -0.28, -0.55);
-}
-
-/**
- * SPAWN REALISTIC CHARACTER TARGETS
- */
-function spawnTarget(x, y, z, color) {
-    const targetContainer = new THREE.Group();
-    targetContainer.position.set(x, y, z);
-
-    // Torso armor capsule body
-    const bodyGeo = new THREE.CylinderGeometry(0.4, 0.3, 1.2, 16);
-    const mat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.4, metalness: 0.6 });
-    const torso = new THREE.Mesh(bodyGeo, mat);
-    torso.castShadow = true;
-    targetContainer.add(torso);
-
-    // Sensor Head Sphere
-    const headGeo = new THREE.SphereGeometry(0.25, 16, 16);
-    const headMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.2 });
-    const head = new THREE.Mesh(headGeo, headMat);
-    head.position.y = 0.85;
-    head.castShadow = true;
-    targetContainer.add(head);
-
-    // Bright neon tracking eye visor strip
-    const visorGeo = new THREE.BoxGeometry(0.35, 0.06, 0.2);
-    const visorMat = new THREE.MeshBasicMaterial({ color: 0xff0055 });
-    const visor = new THREE.Mesh(visorGeo, visorMat);
-    visor.position.set(0, 0.9, -0.16);
-    targetContainer.add(visor);
-
-    scene.add(targetContainer);
-    
-    // Track custom object state parameters inline inside the object reference mapping
-    targets.push({
-        mesh: targetContainer,
-        alive: true,
-        boundingBox: new THREE.Box3(),
-        pulseDir: Math.random() > 0.5 ? 1 : -1
-    });
-}
-
-/**
- * SIMULATED AUDIO HARDWARE SYNTHESIZERS
- */
-function initAudio() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-}
-
-function triggerAudioExplosion(pitch) {
-    if (!audioCtx) return;
-    let osc = audioCtx.createOscillator();
-    let gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(pitch, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + 0.15);
-    
-    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-    gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
-    
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.15);
-}
-
-/**
- * WEAPON SHOOT & 3D RAYCAST HITSCAN MECHANICS
- */
-let lastFireTime = 0;
-function processWeaponFire() {
-    const now = performance.now();
-    const weaponConfig = WEAPONS[currentTier];
-    if (now - lastFireTime < weaponConfig.rate) return;
-    lastFireTime = now;
-
-    initAudio();
-    triggerAudioExplosion(weaponConfig.pitch);
-
-    // Trigger physical animation effects
-    isRecoiling = true;
-    recoilTimer = 0;
-    muzzleFlashMesh.material.opacity = 1.0;
-
-    // Raycasting calculations directly down screen center crosshair direction vector path
-    const raycaster = new THREE.Raycaster();
-    // Center point coordinates map to normal tracking system vectors
-    const centerPoint = new THREE.Vector2(0, 0); 
-    raycaster.setFromCamera(centerPoint, camera);
-
-    // Extract raw lists of object transforms safely out from targets dictionary
-    const objectsToIntersect = targets.filter(t => t.alive).map(t => t.mesh.children[0]); // Check against torso hits
-    const intersects = raycaster.intersectObjects(objectsToIntersect);
-
-    if (intersects.length > 0) {
-        // Find parent container system associated directly with hit torso shape piece
-        const hitTorso = intersects[0].object;
-        const targetObj = targets.find(t => t.mesh.children[0] === hitTorso);
-        
-        if (targetObj) {
-            // Elimination Confirmed
-            targetObj.alive = false;
-            scene.remove(targetObj.mesh);
-            scoreKills++;
-            
-            // Advance Gun Game Tiers cleanly loop cycling over array constraints
-            if (currentTier < WEAPONS.length - 1) {
-                currentTier++;
-            } else {
-                currentTier = 0; // Cycle loop back round
-            }
-            
-            // Synchronize HUD UI text updates instantly
-            document.getElementById('val-weapon').innerText = WEAPONS[currentTier].name.toUpperCase();
-            document.getElementById('val-tier').innerText = `Tier ${currentTier + 1} / ${WEAPONS.length}`;
-            document.getElementById('val-kills').innerText = scoreKills;
-            
-            reconstruct3DWeapon();
-
-            // Automatic Respawn cycle tracker
-            setTimeout(() => {
-                targetObj.alive = true;
-                targetObj.mesh.position.set((Math.random() * 40) - 20, 2, (Math.random() * -30) - 5);
-                scene.add(targetObj.mesh);
-            }, 3000);
-        }
-    }
-}
-
-/**
- * CONTROLS, MOUSE-LOOK POINTER-LOCK & EVENT ATTACHMENTS
- */
-function setupInputListeners() {
-    // Mouse Capture Click Logic
-    startBtn.addEventListener('click', () => {
-        document.body.requestPointerLock();
-    });
-
-    document.addEventListener('pointerlockchange', () => {
-        if (document.pointerLockElement === document.body) {
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.style.display = 'none', 300);
-        } else {
-            overlay.style.display = 'flex';
-            setTimeout(() => overlay.style.opacity = '1', 10);
-        }
-    });
-
-    // Capture precise rotational mouse vectors directly
-    document.addEventListener('mousemove', (e) => {
-        if (document.pointerLockElement !== document.body) return;
-        camera.rotation.y -= e.movementX * 0.0025;
-        camera.rotation.x -= e.movementY * 0.0025;
-        
-        // Lock clamp view pitch vertical movement boundaries
-        camera.rotation.x = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, camera.rotation.x));
-    });
-
-    document.addEventListener('mousedown', (e) => {
-        if (document.pointerLockElement === document.body && e.button === 0) {
-            processWeaponFire();
-        }
-    });
-
-    // Keyboard Tracking mapping states
-    const onKeyDown = (e) => {
-        switch (e.code) {
-            case 'KeyW': moveForward = true; break;
-            case 'KeyA': moveLeft = true; break;
-            case 'KeyS': moveBackward = true; break;
-            case 'KeyD': moveRight = true; break;
-        }
-    };
-
-    const onKeyUp = (e) => {
-        switch (e.code) {
-            case 'KeyW': moveForward = false; break;
-            case 'KeyA': moveLeft = false; break;
-            case 'KeyS': moveBackward = false; break;
-            case 'KeyD': moveRight = false; break;
-        }
-    };
-
-    document.addEventListener('keydown', onKeyDown);
-    document.addEventListener('keyup', onKeyUp);
-    // Force camera Euler ordering tracking for proper FPS rotation
-    camera.rotation.order = 'YXZ';
-}
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-/**
- * ENGINE TICK TICKER LOOP
- */
-function animate() {
-    requestAnimationFrame(animate);
-
-    const time = performance.now();
-    const delta = (time - prevTime) / 1000;
-
-    if (document.pointerLockElement === document.body) {
-        // Apply realistic linear friction dampening directly across movement loops
-        velocity.x -= velocity.x * 10.0 * delta;
-        velocity.z -= velocity.z * 10.0 * delta;
-
-        direction.z = Number(moveForward) - Number(moveBackward);
-        direction.x = Number(moveRight) - Number(moveLeft);
-        direction.normalize(); // Ensure uniform acceleration speed diagonal mapping patterns
-
-        if (moveForward || moveBackward) velocity.z -= direction.z * 60.0 * delta;
-        if (moveLeft || moveRight) velocity.x -= direction.x * 60.0 * delta;
-
-        camera.translateOnAxis(new THREE.Vector3(1, 0, 0), -velocity.x * delta);
-        camera.translateOnAxis(new THREE.Vector3(0, 0, 1), velocity.z * delta);
-        
-        // Force clamp position to floor grid heights perfectly
-        camera.position.y = 2;
-    }
-
-    // Process procedural 3D Recoil mechanics animations smoothly across frames
-    if (isRecoiling) {
-        recoilTimer += delta * 25;
-        if (recoilTimer < Math.PI) {
-            // Procedurally slide gun group coordinates back and up via sine interpolation paths
-            weaponGroup.position.z = -0.55 + Math.sin(recoilTimer) * 0.08;
-            weaponGroup.position.y = -0.28 + Math.sin(recoilTimer) * 0.03;
-            muzzleFlashMesh.material.opacity = Math.max(0, 1.0 - (recoilTimer / Math.PI));
-        } else {
-            isRecoiling = false;
-            weaponGroup.position.set(0.25, -0.28, -0.55);
-            muzzleFlashMesh.material.opacity = 0;
-        }
-    }
-
-    // Dynamic animation tracking behaviors for alive floating targets
-    targets.forEach(target => {
-        if (!target.alive) return;
-        
-        // Floating hover sway effect calculation
-        target.mesh.position.y += Math.sin(time * 0.003 + target.mesh.position.x) * 0.002;
-        
-        // Force models to look towards player position seamlessly
-        target.mesh.lookAt(camera.position.x, target.mesh.position.y, camera.position.z);
-    });
-
-    prevTime = time;
-    renderer.render(scene, camera);
-}
-
-// Fire the initialization engine
-init();
-</script>
 </body>
 </html>
